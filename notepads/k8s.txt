@@ -1,0 +1,127 @@
+aws eks update-kubeconfig --profile=PROFILE --name CLUSTERNAME --region us-west-1 --alias SHORTNAME
+
+kubectl get pods
+kubectl get ns
+kubectl get nodes
+kubectl get nodes -o wide
+kubectl get services
+kubectl config view
+kubectl cluster-info
+helm list --all-namespaces
+kubectl get nodes --show-labels
+kubectl get configmaps
+
+kubectl create namespace NAMESPACE
+kubectl delete pod POD
+
+kubectl rollout restart deployment DEPLOYMENT
+
+kubectl get clusterissuer
+
+kubectl describe clusterissuer ISSUERNAME
+kubectl get certificate -o wide --all-namespaces
+
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
+
+kubectl get all -n ingress-nginx
+
+kubectl get -A ValidatingWebhookConfiguration
+kubectl get validatingwebhookconfigurations 
+kubectl label nodes <your-node-name> LABEL=VALUE	(Agregar)
+kubectl label nodes <your-node-name> LABEL-			(Quitar)
+
+kubectl config set-context --current --namespace=my-namespace
+kubectl config current-context
+kubectl config get-contexts
+
+kubectl api-versions
+
+kubectl describe cm -n kube-system aws-auth
+
+###########################################################
+kubectl apply -f manifest.yaml
+kubectl delete -f manifest.yaml
+kubectl run -it alpine --image=alpine -- sh
+kubectl get pods -l run=nginx --all-namespaces
+												-o \ > jsonpath='{.items[*].spec.containers[*].image}'
+kubectl run -it --tty --rm pruebas --image=alpine --restart=Never -- sh
+
+kubectl get pods -o=wide
+				 -o=yaml
+				 -o=name
+				 -o=json
+kubectl get pod POD -o=yaml --export
+kubectl top node [NODE]
+kubectl get componentstatuses
+kubectl api-resources
+
+kubectl get events --sort-by=.metadata.creationTimestamp
+
+kubectl -n kube-system annotate deployment.apps/cluster-autoscaler cluster-autoscaler.kubernetes.io/safe-to-evict="false"
+
+docker system prune -a
+
+kubectl describe sa aws-load-balancer-controller -n kube-system
+kubectl describe deployment -n kube-system aws-load-balancer-controller
+kubectl describe pod <aws-load-balancer-controller-pod> -n kube-system
+
+
+helm rollback release-name 0
+kubectl rollout undo deployment/deployment-name
+kubectl rollout undo deployment/deployment-name --to-revision=0
+
+kubectl create secret generic set-stores-secret --from-literal=HTTP_PORT="3000"
+
+kubectl get secret secreto -o yaml > secret.yaml
+
+kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
+
+kubectl get env ds aws-node -n kube-system WARM_ENI_TARGET=2
+
+'{"spec":{"maxReplicas": 4}}'
+
+kubectl edit -n kube-system configmap/aws-auth
+
+kubectl patch deployment DEPLOYMENT -p '{"spec":{"replicas": 0}}'
+
+
+##############################################################
+##############################################################
+##############################################################
+
+
+eksctl create cluster --name cluster-eksctl --region us-east-2 --version 1.23 --vpc-private-subnets SUBNETSIDS --without-nodegroup
+
+
+eksctl create nodegroup \
+  --cluster cluster-eksctl \
+  --region us-east-2 \
+  --name my-nodegroup \
+  --node-type m5.large \
+  --nodes 3 \
+  --nodes-min 2 \
+  --nodes-max 4 \
+  --ssh-access \
+  --ssh-public-key my-key
+
+eksctl create cluster --name prod  --without-nodegroup --region us-east-1 --zones eu-west-1a,eu-west-1b,eu-west-1c --vpc-cidr 172.10.0.0/16 --ssh-access=true --ssh-public-key=worker-key-k8s-prod-us-east-1 --asg-access --alb-ingress-access --external-dns-access  --full-ecr-access
+
+eksctl create nodegroup --cluster=xxxxx --name=workers --node-type=xxx   --nodes=2 --nodes-min=2 --nodes-max=6 --node-volume-size=50 --asg-access --full-ecr-access --ssh-access=true --ssh-public-key=xxxx --alb-ingress-access --external-dns-access
+
+
+eksctl create iamidentitymapping \
+  --cluster CLUSTER \
+  --arn arn:aws:iam::ACCOUNTID:user/backdoor_eks_cluster \
+  --username backdoor_eks_cluster \
+  --group system:masters
+ 
+  
+kubernetes.io/role/internal-elb	1
+kubernetes.io/cluster/prod	shared
+
+kubectl port-forward service/mongo 28015:27017
+
+kubectl delete pods name-of-pod --grace-period=0 --force
+
+
+kubectl get secret db-user-pass -o jsonpath='{.data}'

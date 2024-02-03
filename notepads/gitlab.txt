@@ -1,0 +1,6 @@
+curl -X POST \
+--fail \
+-F token=TOKEN \
+-F "ref=main" \
+-F "variables[INSTANCE_ID]=INSTANCEID" \
+https://gitlab.com/api/v4/projects/PROJECTID/trigger/pipeline

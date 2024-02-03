@@ -1,0 +1,22 @@
+get vpn ipsec tunnel summary
+
+diagnose vpn ike gateway list name [NAME]
+diagnose vpn ike log-filter dst-addr4 10.189.0.182
+
+diagnose debug application ike -1
+diagnose debug enable
+
+diagnose sniffer packet any 'host 200.69.230.121'
+
+diagnose vpn tunnel list name [NAME]
+The important field from the particular output is the ‘sa’. SA can have three values:
+a) sa=0 indicates there is a mismatch between selectors or no traffic is being initiated.
+b) sa=1 indicates IPsec SA is matching and there is traffic between the selectors.
+c) sa=2 is only visible during IPsec SA rekey.
+
+
+diagnose  debug  console timestamp  enable  
+diagnose  debug  flow filter addr <destination-IP>
+diagnose  debug  flow filter proto <1 or 17 or 6>  (optional)  where 1=ICMP, 6 = TCP, 17 = UDP…
+diagnose  debug  flow  show iprope enable
+diagnose  debug  flow  trace start 1000
