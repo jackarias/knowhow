@@ -1,0 +1,32 @@
+sudo usermod -aG sudo newuser
+
+nohup rsync -av --exclude='img/' --progress /var/www/source /var/www/destination > rsync_output.log 2>&1 &
+
+openssl s_client -crlf -quiet -starttls smtp -connect email-smtp.us-east-1.amazonaws.com:587
+
+EHLO example.com
+AUTH LOGIN
+ACCESSKEYID
+ACCESSKEYSECRET
+MAIL FROM: sender@mail.com
+RCPT TO: destination@mail.com
+DATA
+X-SES-CONFIGURATION-SET: ConfigSet
+From: Prueba Sender <sender@mail.com>
+To: destination@mail.com
+Subject: Amazon SES SMTP Test
+
+This message was sent using the Amazon SES SMTP interface.
+.
+QUIT
+
+
+###################### DNS ######################
+dig +short ns FQDN
+dig axfr <url> @<name-server>
+
+###################### NETWORK ######################
+sudo tcpdump -n icmp
+
+dig +short myip.opendns.com @resolver1.opendns.com
+curl checkip.amazonaws.com

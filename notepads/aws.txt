@@ -1,0 +1,40 @@
+aws sts decode-authorization-message --encoded-message [Encrypted Message]
+
+aws ssm send-command --document-name "AWS-RunShellScript" --targets "Key=instanceids,Values=$INSTANCE_ID" --parameters "commands=echo $PUBLIC_KEY > /home/ubuntu/.ssh/authorized_keys"
+
+aws ssm start-session --target $INSTANCE_ID --document-name AWS-StartSSHSession
+
+aws ecr create-repository --repository-name green
+
+aws iam list-users
+aws iam get-user --user-name (username)
+aws iam list-groups
+aws iam get-group --group-name ops
+
+aws sts get-caller-identity --output text --query Account
+
+aws eks describe-cluster --name my-cluster --query "cluster.identity.oidc.issuer" --output text
+
+aws iam list-open-id-connect-providers | grep EXAMPLED539D4633E53DE1B71EXAMPLE
+
+aws configure list-profiles
+export AWS_PROFILE=UY-MT-PRD01
+
+aws sts get-caller-identity --profile dev
+
+#####################################################################
+########################### S3 Policies #############################
+#####################################################################
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::BUCKETNAME/*"
+        }
+    ]
+}

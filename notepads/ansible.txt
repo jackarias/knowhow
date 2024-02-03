@@ -1,0 +1,1 @@
+ansible-playbook -i hosts.inv ansible-playbook.yml --extra-vars "aVar1=aValue1 aVar2=aValue2"
