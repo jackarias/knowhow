@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-web-kustomize
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-web-kustomize
+  template:
+    metadata:
+      labels:
+        app: sample-web-kustomize
+    spec:
+      containers:
+      - name: sample-web-kustomize
+        image: sample-web-v1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - configMapRef:
+            name: sample-web-kustomize
