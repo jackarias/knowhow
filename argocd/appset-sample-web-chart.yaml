@@ -21,7 +21,7 @@ spec:
         targetRevision: develop
         helm:
           valueFiles:
-            - "helm-charts/sample-web-chart/{{ microservice.valueFile }}"
+            - "{{ microservice.valueFile }}"
       syncPolicy:
         automated:
           prune: true
@@ -29,5 +29,5 @@ spec:
         syncOptions:
           - CreateNamespace=true
       destination:
-        name: "https://kubernetes.default.svc"
+        name: "in-cluster"
         namespace: "{{ microservice.namespace }}"

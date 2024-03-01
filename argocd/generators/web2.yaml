@@ -1,0 +1,4 @@
+microservice:
+  name: sample-web2
+  namespace: ns-sample-web2
+  valueFile: values-web2.yaml
