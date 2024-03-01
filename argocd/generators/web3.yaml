@@ -1,0 +1,4 @@
+microservice:
+  name: sample-web3
+  namespace: ns-sample-web3
+  valueFile: values-web3.yaml
