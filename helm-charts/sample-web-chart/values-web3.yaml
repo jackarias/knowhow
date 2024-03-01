@@ -1,0 +1,15 @@
+configmap:
+  data:
+    - varName: A_RANDOM_ENV_VAR
+      varValue: "DEMO - HELM FTW!"
+
+##########################################
+########### Subchart config ##############
+##########################################
+microservice:
+  image:
+    repository: sample-web-v1
+    tag: latest
+  service:
+    port: 9500
+    targetPort: 5000 
