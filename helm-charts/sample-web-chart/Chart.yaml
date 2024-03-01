@@ -5,11 +5,7 @@ type: application
 version: 1.0.0
 appVersion: "1.0.0"
 dependencies:
-- alias: microservice1
-  name: microservice-chart
-  version: "1.0.0"
-  repository: "file://./microservices"
-- alias: microservice2
+- alias: microservice
   name: microservice-chart
   version: "1.0.0"
   repository: "file://./microservices"

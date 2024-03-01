@@ -6,14 +6,7 @@ configmap:
 ##########################################
 ########### Subchart config ##############
 ##########################################
-microservice1:
-  image:
-    repository: sample-web-v1
-    tag: latest
-  service:
-    port: 8200
-    targetPort: 5000 
-microservice2:
+microservice:
   image:
     repository: sample-web-v1
     tag: latest
