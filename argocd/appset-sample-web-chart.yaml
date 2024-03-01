@@ -14,14 +14,14 @@ spec:
     metadata:
       name: "{{ microservice.name }}"
     spec:
-      helm:
-        valuesFiles:
-          - "helm-charts/sample-web-chart/{{ microservice.valueFile }}"
       project: "default"
       source:
         path: "helm-charts/sample-web-chart"
         repoURL: "https://github.com/jackarias/knowhow.git" 
         targetRevision: develop
+        helm:
+          valueFiles:
+            - "helm-charts/sample-web-chart/{{ microservice.valueFile }}"
       syncPolicy:
         automated:
           prune: true
