@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-sample-web-kustomize
+  namespace: argocd-chart
+spec:
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+  source:
+    path: kustomize
+    repoURL: https://github.com/jackarias/knowhow.git
+    targetRevision: develop
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: sample-web-kustomize
+  project: default
