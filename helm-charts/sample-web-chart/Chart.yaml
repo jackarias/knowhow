@@ -9,3 +9,7 @@ dependencies:
   name: microservice-chart
   version: "1.0.0"
   repository: "file://./microservices"
+- alias: microservice2
+  name: microservice-chart
+  version: "1.0.0"
+  repository: "file://./microservices"
