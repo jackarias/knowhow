@@ -1,0 +1,15 @@
+configmap:
+  data:
+    - varName: A_RANDOM_ENV_VAR
+      varValue: "WEB2 - HELM FTW!"
+
+##########################################
+########### Subchart config ##############
+##########################################
+microservice1:
+  image:
+    repository: sample-web-v1
+    tag: latest
+  service:
+    port: 8300
+    targetPort: 5000 
