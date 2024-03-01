@@ -9,7 +9,7 @@ spec:
         repoURL: "https://github.com/jackarias/knowhow.git"
         revision: develop
         files:
-          - path: /argocd/generators/*.yaml
+          - path: argocd/generators/*.yaml
   template:
     metadata:
       name: "{{ microservice.name }}"
