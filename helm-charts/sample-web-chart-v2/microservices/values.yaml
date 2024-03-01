@@ -1,0 +1,12 @@
+replicaCount: 1
+
+image:
+  repository: nginx
+  pullPolicy: Never
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+service:
+  type: ClusterIP
+  port: 2000
+  targetPort: 3000
