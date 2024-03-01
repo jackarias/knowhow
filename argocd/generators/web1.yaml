@@ -1,0 +1,4 @@
+microservice:
+  name: sample-web1
+  namespace: ns-sample-web1
+  valueFile: values.yaml

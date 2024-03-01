@@ -7,5 +7,4 @@ data:
   {{- range .Values.configmap.data }}
   {{ .varName }}: {{ .varValue | quote }}
   {{- end }}
-
-{{-end }}
+{{- end }}

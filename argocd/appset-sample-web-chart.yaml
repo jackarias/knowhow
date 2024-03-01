@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: sample-web-chart-bundle
+  namespace: argocd-chart
+spec:
+  generators:
+    - git:
+        repoURL: "https://github.com/jackarias/knowhow.git"
+        revision: develop
+        files:
+          - path: /argocd/generators/*.yaml
+  template:
+    metadata:
+      name: "{{ microservice.name }}"
+    spec:
+      helm:
+        valuesFiles:
+          - "helm-charts/sample-web-chart/{{ microservice.valueFile }}"
+      project: "default"
+      source:
+        path: "helm-charts/sample-web-chart"
+        repoURL: "https://github.com/jackarias/knowhow.git" 
+        targetRevision: develop
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+      destination:
+        name: "https://kubernetes.default.svc"
+        namespace: "{{ microservice.namespace }}"

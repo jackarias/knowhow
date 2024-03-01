@@ -1,0 +1,52 @@
+---
+# Source: core-chart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: cm-sample-web
+data:
+  A_RANDOM_ENV_VAR: "HELM FTW!"
+---
+# Source: core-chart/charts/microservice1/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-web
+  labels:
+    app: sample-web
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8200
+      targetPort: 5000
+      protocol: TCP
+      name: http
+  selector:
+    app: sample-web
+---
+# Source: core-chart/charts/microservice1/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-web
+  template:
+    metadata:
+      labels:
+        app: sample-web
+    spec:
+      containers:
+        - name: sample-web
+          image: "sample-web-v1:latest"
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 5000
+              protocol: TCP
+          envFrom:
+          - configMapRef:
+              name: cm-sample-web
