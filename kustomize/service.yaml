@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app: sample-web-kustomize
-  type: ClusterIP
+  type: NodePort
   ports:
   - protocol: TCP
     port: 8100
