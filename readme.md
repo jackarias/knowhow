@@ -1,3 +1,4 @@
+---
 # ArgoCD - Laboratorio básico demostrativo
 
 ## Requisitos y alcance
@@ -39,8 +40,7 @@ Para este caso desplegaremos un ApplicationSet basandonos en el Chart "sample-we
 
 ## Yapa (Helm chart multidespliegue)
 Si bien esto no es para desplegar con ArgoCD, vale la pena mencionar que es otro modo de desplegar varios microservicios. El condicionante en este caso es que comparten un configmap que será igual para todos (En el caso anterior podemos generar distintos values para cada uno de los microservicios). Para desplegarlo debemos tener creado un namespace y desplegarlo del siguiente modo.
-`
-cd helm-charts/sample-web-chart-v2
+`cd helm-charts/sample-web-chart-v2
 helm dependency update
 helm upgrade --install [RELEASE_NAME] -n [NAMESPACE] -f values.yaml .`
 
