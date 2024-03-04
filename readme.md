@@ -1,4 +1,3 @@
----
 # ArgoCD - Laboratorio básico demostrativo
 
 ## Requisitos y alcance
