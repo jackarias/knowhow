@@ -20,3 +20,10 @@ microservice2:
   service:
     port: 9000
     targetPort: 5000 
+microservice3:
+  image:
+    repository: sample-web-v1
+    tag: latest
+  service:
+    port: 9500
+    targetPort: 5000 
