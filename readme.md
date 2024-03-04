@@ -6,7 +6,7 @@ Requisitos:
    - kubectl
    - helm
    - minikube (No probado en otras herramientas que emulen un cluster de k8s)
-   - imagen del contenedor de la app de ejemplo que se encuentra en [labs/front_react_dynamic_env](TBD)
+   - imagen del contenedor de la app de ejemplo que se encuentra en [labs/front_react_dynamic_env](https://github.com/jackarias/knowhow/tree/main/labs/front_react_dynamic_env)
  - Directorios:
    - argocd
    - helm-charts
@@ -19,7 +19,8 @@ Alcance:
  - Ejemplo de ApplicationSet con Helm.
    - Despliegue de varios Application con un ApplicationSet.
    - Parametrización de cada Application.
-> EXTRA: Alternativa solo Helm. Despliegue de varios microservicios con el mismo Chart.
+==EXTRA==
+: Alternativa solo Helm. Despliegue de varios microservicios con el mismo Chart.
 
 ## Despliegue en Argo
 
