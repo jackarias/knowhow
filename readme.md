@@ -19,6 +19,7 @@ Alcance:
  - Ejemplo de ApplicationSet con Helm.
    - Despliegue de varios Application con un ApplicationSet.
    - Parametrización de cada Application.
+
 ==EXTRA==
 : Alternativa solo Helm. Despliegue de varios microservicios con el mismo Chart.
 
