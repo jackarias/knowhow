@@ -1,0 +1,12 @@
+{
+  "name": "cloudflare-api",
+  "version": "1.0.0",
+  "description": "A simple JavaScript code that requests information from a URL using GET method with a Bearer token in API_KEY parameter.",
+  "main": "cloudflare-api.js",
+  "scripts": {
+    "start": "node cloudflare-api.js"
+  },
+  "dependencies": {
+    "https": "^1.0.0"
+  }
+}
