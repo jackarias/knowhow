@@ -1,15 +1,15 @@
 # Paso 1 - Copiar codigo, descargar librerias y armar proyecto
-FROM node:16-alpine as build-deps
+FROM node:23-alpine as build-deps
 WORKDIR /app
 COPY . .
 RUN yarn install && yarn run build
 
 # Paso 2 - Deploy en ambiente
-FROM nginx:1.12-alpine
+FROM nginx:1.27-alpine
 WORKDIR /app
 COPY --from=build-deps /app/build /usr/share/nginx/html
 
-# Configuración de NGINX
+# Configuracion de NGINX
 COPY --from=build-deps /app/nginx/default.conf /etc/nginx/conf.d
 
 # Seteo de variables de entorno 
